@@ -4,7 +4,6 @@ import PlusFilled from '../icons/PlusFilled'
 import Button from '../ui/button/Button'
 import SortFilled from '../icons/SortFilled'
 import Input from '../ui/form-components/input/Input'
-import SaveFilled from '../icons/SaveFilled'
 import SearchOutlined from '../icons/SearchOutlined'
 import FormGroup from '../ui/form-components/form-group/FormGroup'
 import Select from '../ui/form-components/select/Select'
@@ -58,7 +57,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
                 label: "Oldest",
               },
             ]}
-            onChange={(e) => handleSort(e)}
+            onChange={handleSort}
           ></Select>
           <Button className="btn btn-primary flex gap-1 uppercase flex-shrink-0">
             <SortFilled />
