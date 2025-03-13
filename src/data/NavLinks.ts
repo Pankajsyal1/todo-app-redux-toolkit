@@ -7,8 +7,8 @@ export const NavLinks = [
     label: "Todos",
     url: "/todos"
   },
-  {
-    label: "Users",
-    url: "/users"
-  }
+  // {
+  //   label: "Users",
+  //   url: "/users"
+  // }
 ]

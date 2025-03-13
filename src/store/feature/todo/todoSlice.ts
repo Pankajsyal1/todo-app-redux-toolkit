@@ -2,7 +2,22 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Todo, TodoState } from '@/types/todo/todoTypes';
 
 const initialState: TodoState = {
-    items: [],
+    items: [
+        {
+            id: 1,
+            title: "My First Todo",
+            description: "This is the first todo description",
+            date: "25/03/2025",
+            status: 'pending'
+        },
+        {
+            id: 2,
+            title: "My Second Todo",
+            description: "This is the second todo description",
+            date: "25/03/2025",
+            status: 'completed'
+        }
+    ],
     filter: 'ALL',
     sortOrder: 'DATE_DESC',
 };

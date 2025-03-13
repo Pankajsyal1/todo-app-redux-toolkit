@@ -8,28 +8,36 @@ const SortControls: React.FC = () => {
   const sortOrder = useSelector((state: RootState) => state.todos.sortOrder);
 
   return (
-    <div>
+    <div className="flex flex-wrap gap-2 p-4 bg-white rounded-lg shadow-md justify-center md:justify-start">
       <button
         onClick={() => dispatch(setSortOrder("DATE_DESC"))}
         disabled={sortOrder === "DATE_DESC"}
+        className={`px-4 py-2 rounded-md text-white font-semibold transition-all duration-200 ${sortOrder === "DATE_DESC" ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
+          }`}
       >
         Newest First
       </button>
       <button
         onClick={() => dispatch(setSortOrder("DATE_ASC"))}
         disabled={sortOrder === "DATE_ASC"}
+        className={`px-4 py-2 rounded-md text-white font-semibold transition-all duration-200 ${sortOrder === "DATE_ASC" ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"
+          }`}
       >
         Oldest First
       </button>
       <button
         onClick={() => dispatch(setSortOrder("ALPHA_ASC"))}
         disabled={sortOrder === "ALPHA_ASC"}
+        className={`px-4 py-2 rounded-md text-white font-semibold transition-all duration-200 ${sortOrder === "ALPHA_ASC" ? "bg-gray-400 cursor-not-allowed" : "bg-purple-500 hover:bg-purple-600"
+          }`}
       >
         A-Z
       </button>
       <button
         onClick={() => dispatch(setSortOrder("ALPHA_DESC"))}
         disabled={sortOrder === "ALPHA_DESC"}
+        className={`px-4 py-2 rounded-md text-white font-semibold transition-all duration-200 ${sortOrder === "ALPHA_DESC" ? "bg-gray-400 cursor-not-allowed" : "bg-red-500 hover:bg-red-600"
+          }`}
       >
         Z-A
       </button>
