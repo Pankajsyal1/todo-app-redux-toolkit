@@ -2,7 +2,7 @@ export interface User {
     id: string;
     name: string;
     email: string;
-    phone: number;
+    phone: string;
     dob: Date | string;
     bio: string;
     status: 'ACTIVE' | 'INACTIVE';

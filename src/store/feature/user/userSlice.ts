@@ -8,7 +8,7 @@ const initialState: UserState = {
             id: nanoid(),
             name: "test kumar",
             email: "test101@example.com",
-            phone: 1237894560,
+            phone: "1237894560",
             dob: "20-12-2002",
             bio: "dhs sdh ashdkjash kdhasjdh kajhd",
             status: 'ACTIVE'
@@ -17,7 +17,7 @@ const initialState: UserState = {
             id: nanoid(),
             name: "test singh",
             email: "test102@example.com",
-            phone: 1234567989,
+            phone: "1234567989",
             dob: "12-08-2002",
             bio: "j kjhedkwh djkwehkdhwkj rhkwe jkerwhkwehrklweh",
             status: 'INACTIVE'
@@ -26,7 +26,7 @@ const initialState: UserState = {
             id: nanoid(),
             name: "test syal",
             email: "test103@example.com",
-            phone: 147852390,
+            phone: "147852390",
             dob: "14-01-2001",
             bio: "kjefhjkgsdjkhgjksdhjksdhfhwik skjhdfjksahfuk kjdshjk",
             status: 'ACTIVE'

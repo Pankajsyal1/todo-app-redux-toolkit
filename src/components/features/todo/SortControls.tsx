@@ -8,11 +8,11 @@ const SortControls: React.FC = () => {
   const sortOrder = useSelector((state: RootState) => state.todos.sortOrder);
 
   return (
-    <div className="flex flex-wrap gap-2 p-4 bg-white rounded-lg shadow-md justify-center md:justify-start">
+     <div className="flex p-4 bg-white rounded-lg shadow-md items-center flex-wrap gap-2">
       <button
         onClick={() => dispatch(setSortOrder("DATE_DESC"))}
         disabled={sortOrder === "DATE_DESC"}
-        className={`px-4 py-2 rounded-md text-white font-semibold transition-all duration-200 ${sortOrder === "DATE_DESC" ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
+        className={`px-4 py-2 rounded-md text-white font-semibold transition-all duration-200 ${sortOrder === "DATE_DESC" ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"
           }`}
       >
         Newest First

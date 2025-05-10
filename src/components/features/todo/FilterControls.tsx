@@ -8,11 +8,11 @@ const FilterControls: React.FC = () => {
   const filter = useSelector((state: RootState) => state.todos.filter);
 
   return (
-    <div className="flex space-x-2 p-4 bg-white rounded-lg shadow-md">
+    <div className="flex p-4 bg-white rounded-lg shadow-md items-center flex-wrap gap-2">
       <button
         onClick={() => dispatch(setFilter("ALL"))}
         disabled={filter === "ALL"}
-        className={`px-4 py-2 rounded-md text-white font-semibold transition-all duration-200 ${filter === "ALL" ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
+        className={`px-4 py-2 rounded-md text-white font-semibold transition-all duration-200 ${filter === "ALL" ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"
           }`}
       >
         All

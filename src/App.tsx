@@ -3,17 +3,18 @@ import RootLayouts from "./layouts/RootLayouts";
 import TodoApp from "./views/todos";
 import UserApp from "./views/users";
 import EditUser from "./views/users/edit";
-import HomeView from "./views/home";
+// import HomeView from "./views/home";
 import AddUser from "./views/users/add";
+import PostsPage from "./views/posts";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayouts />,
     children: [
-      { index:true, element: <HomeView /> },
+      // { index:true, element: <HomeView /> },
       {
-        path: "todos",
+        // path: "todos",
         children: [{ index: true, element: <TodoApp /> }],
       },
       {
@@ -24,6 +25,12 @@ const router = createBrowserRouter([
           { path: ":id/edit", element: <EditUser /> },
         ],
       },
+      {
+        path: "posts",
+        children: [
+          { index: true, element: <PostsPage /> }
+        ]
+      }
     ],
   },
 

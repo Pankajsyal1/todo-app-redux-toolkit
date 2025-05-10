@@ -1,14 +1,14 @@
 export const NavLinks = [
   {
-    label: "Home",
+    label: "Todos",
     url: "/"
   },
   {
-    label: "Todos",
-    url: "/todos"
+    label: "Users",
+    url: "/users"
   },
-  // {
-  //   label: "Users",
-  //   url: "/users"
-  // }
+  {
+    label: "Posts",
+    url: "/posts"
+  }
 ]

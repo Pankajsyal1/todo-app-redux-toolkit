@@ -81,11 +81,11 @@ const UserForm: React.FC<UserFormProps> = ({ user, title }) => {
   };
 
   return (
-    <Card className="w-1/2 mx-auto">
-      <SectionHeading title={title} center/>
-      <form className="grid md:grid-cols-2 gap-5" onSubmit={handleForm}>
+    <Card className="max-full md:w-1/2 mx-3 md:mx-auto">
+      <SectionHeading onSort={() => console.log} onSearch={() => console.log} title={title} center />
+      <form className="grid grid-cols-2 gap-3 md:gap-5" onSubmit={handleForm}>
         {/* Name */}
-        <FormGroup>
+        <FormGroup className="cols-span-2">
           <Label htmlFor="name">Name</Label>
           <Input
             type="text"
@@ -97,7 +97,7 @@ const UserForm: React.FC<UserFormProps> = ({ user, title }) => {
           />
         </FormGroup>
         {/* Email */}
-        <FormGroup>
+        <FormGroup className="cols-span-2">
           <Label htmlFor="email">Email</Label>
           <Input
             type="email"
