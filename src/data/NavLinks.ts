@@ -4,6 +4,10 @@ export const NavLinks = [
     url: "/"
   },
   {
+    label: "Books",
+    url: "/books"
+  },
+  {
     label: "Users",
     url: "/users"
   },

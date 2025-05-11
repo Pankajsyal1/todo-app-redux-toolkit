@@ -26,11 +26,14 @@ const TodoList: React.FC = () => {
 
   return (
     <div className="mt-4">
-      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {sortedTodos.length > 0 ? <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {sortedTodos.map((todo) => (
           <TodoItem key={todo.id} todo={todo} />
         ))}
       </ul>
+        : <div className="p-4 bg-white shadow-md rounded-lg flex border border-gray-200 text-center h-[200px] justify-center items-center">
+          <p className="text-xl font-medium">No Todo Found...</p>
+        </div>}
     </div>
   );
 };

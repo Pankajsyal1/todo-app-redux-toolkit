@@ -12,7 +12,7 @@ const TodoApp: React.FC = () => {
   return (
     <Section>
       <div className="flex justify-between items-center mb-6 mx-3">
-        <h1 className="text-xl font-bold text-center">Todo App</h1>
+        <h1 className={`text-lg sm:text-xl md:text-2xl font-extrabold uppercase`}>Todo App</h1>
       <Button onClick={() => setVisible(true)} className="px-4 py-2 rounded-md text-white font-semibold transition-all duration-200 bg-green-500 hover:bg-green-600">
         Add Todo
       </Button>

@@ -1,23 +1,30 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+// store/feature/posts/postSlice.ts
+
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
-// Define the type for the state
 interface PostState {
   isLoading: boolean;
-  data: any[] | null;
+  list: any[];
+  single: any | null;
   isError: boolean;
 }
 
-// Initial state
 const initialState: PostState = {
   isLoading: false,
-  data: null,
+  list: [],
+  single: null,
   isError: false,
 };
 
-// Action
-export const fetchPosts = createAsyncThunk("fetchPosts", async () => {
+// Fetch all posts
+export const fetchPosts = createAsyncThunk("posts/fetchAll", async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  return response.json();
+});
+
+// Fetch post by ID
+export const fetchPostsById = createAsyncThunk("posts/fetchById", async (id: number) => {
+  const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
   return response.json();
 });
 
@@ -32,9 +39,22 @@ const postSlice = createSlice({
       })
       .addCase(fetchPosts.fulfilled, (state, action: PayloadAction<any[]>) => {
         state.isLoading = false;
-        state.data = action.payload;
+        state.list = action.payload;
       })
       .addCase(fetchPosts.rejected, (state) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
+
+    builder
+      .addCase(fetchPostsById.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchPostsById.fulfilled, (state, action: PayloadAction<any>) => {
+        state.isLoading = false;
+        state.single = action.payload;
+      })
+      .addCase(fetchPostsById.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
       });

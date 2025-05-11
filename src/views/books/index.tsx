@@ -1,10 +1,10 @@
 import SectionHeading from "@/components/common/SectionHeading";
-import UserList from "@/components/features/users/UserList";
+import BookList from "@/components/features/books/BookList";
 import Section from "@/components/ui/section/Section";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useState } from "react";
 
-const UserApp: React.FC = () => {
+const BookApp: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const debouncedSearchValue = useDebounce(searchValue, 300);
  const [sortValue, setSortValue] = useState<string>("Newest");
@@ -25,14 +25,14 @@ const UserApp: React.FC = () => {
         sortValue={sortValue}
         onSearch={handleSearch}
         onSort={handleSort}
-        title="User List App"
+        title="Book List App"
         extra
       />
       <div className="mx-3">
-        <UserList searchValue={debouncedSearchValue} sortValue={sortValue}/>
+        <BookList searchValue={debouncedSearchValue} sortValue={sortValue}/>
       </div>
     </Section>
   );
 };
 
-export default UserApp;
+export default BookApp;

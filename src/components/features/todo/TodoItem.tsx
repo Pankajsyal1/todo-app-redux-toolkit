@@ -71,14 +71,40 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
         </>
       ) : (
         <div className="p-4 bg-gray-100 rounded-lg shadow-md border border-gray-300">
-          <h3 className="text-lg font-semibold text-gray-900 capitalize">{todo.title}</h3>
-          <p className="text-gray-700">{todo.description}</p>
-          <p className="text-sm text-gray-500">{todo.date}</p>
-          <p className={`text-sm font-semibold ${todo.status === "completed" ? "text-green-600" : "text-yellow-600"}`}>
-            Status: {todo.status}
-          </p>
-          <div className="flex gap-2 mt-2">
-            <button onClick={() => setIsEditing(true)} className="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">
+          <div className="flex flex-col gap-2">
+            {/* Title */}
+          <div>
+            <p className={`text-sm font-medium text-gray-700`}>
+              Title:
+            </p>
+            <h3 className="text-lg font-semibold text-gray-900 capitalize">{todo.title}</h3>
+          </div>
+          {/* Description */}
+          <div>
+            <p className={`text-sm font-medium text-gray-700`}>
+              Description:
+            </p>
+            <p className="text-base text-black">{todo.description}</p>
+          </div>
+          {/* Date */}
+          <div>
+            <p className={`text-sm font-medium text-gray-700`}>
+              Date:
+            </p>
+            <p className="text-base text-black">{todo.date}</p>
+          </div>
+          {/* Status */}
+          <div>
+            <p className={`text-sm font-medium text-gray-700`}>
+              Status:
+            </p>
+            <span className={`capitalize text-white font-medium inline-block text-center text-xs px-2 py-1 rounded ${todo.status === "completed" ? "bg-green-600" : "bg-yellow-600"}`}>{todo.status}</span>
+          </div>
+          </div>
+
+          {/* Button */}
+          <div className="flex gap-2 mt-4">
+            <button onClick={() => setIsEditing(true)} className="px-4 py-1.5 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">
               Edit
             </button>
             <button onClick={() => dispatch(deleteTodo(todo.id))} className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">

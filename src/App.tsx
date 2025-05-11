@@ -1,11 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayouts from "./layouts/RootLayouts";
 import TodoApp from "./views/todos";
-import UserApp from "./views/users";
-import EditUser from "./views/users/edit";
+import BookApp from "./views/books";
+import EditBook from "./views/books/edit";
 // import HomeView from "./views/home";
-import AddUser from "./views/users/add";
+import AddBook from "./views/books/add";
 import PostsPage from "./views/posts";
+import ViewPost from "./views/posts/view";
 
 const router = createBrowserRouter([
   {
@@ -18,17 +19,18 @@ const router = createBrowserRouter([
         children: [{ index: true, element: <TodoApp /> }],
       },
       {
-        path: "users",
+        path: "books",
         children: [
-          { index: true, element: <UserApp /> },
-          { path: "/users/add", element: <AddUser /> },
-          { path: ":id/edit", element: <EditUser /> },
+          { index: true, element: <BookApp /> },
+          { path: "add", element: <AddBook /> },
+          { path: ":id/edit", element: <EditBook /> },
         ],
       },
       {
         path: "posts",
         children: [
-          { index: true, element: <PostsPage /> }
+          { index: true, element: <PostsPage /> },
+          { path:"view/:id", element: <ViewPost /> }
         ]
       }
     ],

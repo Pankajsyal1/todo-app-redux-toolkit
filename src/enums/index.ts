@@ -1,11 +1,11 @@
-export enum UserStatus {
-    active = "ACTIVE",
-    inactive = "INACTIVE"
+export enum BookStatus {
+    published = "PUBLISHED",
+    unPublish = "UNPUBLISH"
 }
 
 
 
-export enum UserSorting {
+export enum BookSorting {
     newest = "NEWEST",
     oldest = "OLDEST"
 }
