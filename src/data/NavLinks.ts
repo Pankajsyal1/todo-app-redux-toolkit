@@ -1,7 +1,7 @@
 export const NavLinks = [
   {
     label: "Todos",
-    url: "/"
+    url: "/todos"
   },
   {
     label: "Books",

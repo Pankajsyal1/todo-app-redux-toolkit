@@ -11,10 +11,10 @@ const TheHeader: React.FC = () => {
   };
 
   return (
-    <header className="bg-white shadow">
+    <header className="bg-white shadow fixed w-full z-10">
       {/* Main header container */}
       <div className="container mx-auto flex justify-between items-center py-3 px-4">
-        <Link to="/" className="flex items-center">
+        <Link to="/todos" className="flex items-center">
           <img src={logo} alt="Logo" width={140} />
         </Link>
 

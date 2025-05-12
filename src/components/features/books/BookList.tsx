@@ -63,36 +63,35 @@ const UserList = ({
   }
 
   return (
-    <div className="overflow-x-auto pb-3">
-      <table className="min-w-full bg-white border border-gray-200 text-nowrap">
-        <thead>
-          <tr className="bg-gray-800">
-            <td className="text-left p-4 border-b border-gray-200 text-white font-semibold uppercase">S.No</td>
-            <td className="text-left p-4 border-b border-gray-200 text-white font-semibold uppercase">Title</td>
-            <td className="text-left p-4 border-b border-gray-200 text-white font-semibold uppercase">Author</td>
-            <td className="text-left p-4 border-b border-gray-200 text-white font-semibold uppercase">Price</td>
-            <td className="text-left p-4 border-b border-gray-200 text-white font-semibold uppercase">Publish Date</td>
-            <td className="text-left p-4 border-b border-gray-200 text-white font-semibold uppercase">Description</td>
-            <td className="text-left p-4 border-b border-gray-200 text-white font-semibold uppercase">Status</td>
-            <td className="text-left p-4 border-b border-gray-200 text-white font-semibold uppercase">Actions</td>
-          </tr>
-        </thead>
-        <tbody>
-       { filteredTodo.length > 0 ?  <>
-          {filteredTodo.map((user, index) => (
-            <BookRow sr={index + 1} key={user.id} {...user} />
-          ))}
-          </>:
-          
-          <tr>
-            <td colSpan={8}>
-              <p className="text-center py-4">No book found....</p>
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
-    </div>
+<div className="p-4 bg-white shadow-md rounded-lg flex flex-col gap-2 border border-gray-200 overflow-x-auto">
+  <table className="min-w-full divide-y divide-gray-300 text-sm text-nowrap">
+    <thead className="bg-gray-800 text-white">
+      <tr>
+        <th className="px-4 py-3 text-left font-semibold tracking-wide">S.No</th>
+        <th className="px-4 py-3 text-left font-semibold tracking-wide">Title</th>
+        <th className="px-4 py-3 text-left font-semibold tracking-wide">Author</th>
+        <th className="px-4 py-3 text-left font-semibold tracking-wide">Price</th>
+        <th className="px-4 py-3 text-left font-semibold tracking-wide">Publish Date</th>
+        <th className="px-4 py-3 text-left font-semibold tracking-wide">Status</th>
+        <th className="px-4 py-3 text-left font-semibold tracking-wide">Actions</th>
+      </tr>
+    </thead>
+    <tbody className="divide-y divide-gray-200">
+      {filteredTodo.length > 0 ? (
+        filteredTodo.map((book, index) => (
+          <BookRow sr={index + 1} key={book.id} {...book} />
+        ))
+      ) : (
+        <tr>
+          <td colSpan={8} className="text-center px-4 py-4 text-gray-500">
+            No book found...
+          </td>
+        </tr>
+      )}
+    </tbody>
+  </table>
+</div>
+
   );
 };
 
