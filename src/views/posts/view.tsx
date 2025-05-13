@@ -4,7 +4,7 @@ import BackOutlined from "@/components/icons/BackOutlined";
 import Button from "@/components/ui/button/Button";
 import Section from "@/components/ui/section/Section";
 import { AppDispatch, RootState } from "@/store";
-import { fetchPostsById } from "@/store/feature/posts/postSlice";
+import { fetchPostById } from "@/store/feature/posts/postSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -17,7 +17,7 @@ const ViewPost = () => {
 
     useEffect(() => {
         if (id) {
-            dispatch(fetchPostsById(Number(id)));
+            dispatch(fetchPostById(Number(id)));
         }
     }, [dispatch, id]);
 

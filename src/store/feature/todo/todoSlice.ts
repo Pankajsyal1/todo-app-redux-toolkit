@@ -3,21 +3,50 @@ import { Todo, TodoState } from '@/types/todo/todoTypes';
 
 const initialState: TodoState = {
     items: [
-        {
-            id: 1,
-            title: "My First Todo",
-            description: "This is the first todo description",
-            date: "25/03/2025",
-            status: 'pending'
-        },
-        {
-            id: 2,
-            title: "My Second Todo",
-            description: "This is the second todo description",
-            date: "25/03/2025",
-            status: 'completed'
-        }
-    ],
+    {
+        id: 1,
+        title: "My First Todo",
+        description: "This is the first todo description",
+        date: "25/03/2025",
+        status: 'pending'
+    },
+    {
+        id: 2,
+        title: "My Second Todo",
+        description: "This is the second todo description",
+        date: "26/03/2025",
+        status: 'completed'
+    },
+    {
+        id: 3,
+        title: "My Third Todo",
+        description: "This is the third todo description",
+        date: "27/03/2025",
+        status: 'pending'
+    },
+    {
+        id: 4,
+        title: "My Fourth Todo",
+        description: "This is the fourth todo description",
+        date: "28/03/2025",
+        status: 'completed'
+    },
+    {
+        id: 5,
+        title: "My Fifth Todo",
+        description: "This is the fifth todo description",
+        date: "29/03/2025",
+        status: 'pending'
+    },
+    {
+        id: 6,
+        title: "My Sixth Todo",
+        description: "This is the sixth todo description",
+        date: "30/03/2025",
+        status: 'completed'
+    }
+]
+,
     filter: 'ALL',
     sortOrder: 'DATE_DESC',
 };

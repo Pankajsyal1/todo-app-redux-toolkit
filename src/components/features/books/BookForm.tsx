@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Button from "@/components/ui/button/Button";
 import Card from "@/components/ui/card/Card";
-import React, { useState } from "react";
 import FormGroup from "@/components/ui/form-components/form-group/FormGroup";
 import Label from "@/components/ui/form-components/label/Label";
 import Input from "@/components/ui/form-components/input/Input";
@@ -14,68 +12,69 @@ import SectionHeading from "@/components/common/SectionHeading";
 import { Book } from "@/types/book/bookTypes";
 import { addBook, editBook } from "@/store/feature/book/bookSlice";
 import { BookStatus } from "@/enums";
+import { useState } from "react";
 
 const INITIAL_STATE = {
-  id: '',
-  title: '',
-  price: '',
-  author: '',
-  date: '',
-  description: '',
-  published: false
+  id: "",
+  title: "",
+  price: "",
+  author: "",
+  date: "",
+  description: "",
+  published: false,
 };
 
 interface BookFormProps {
-  book?: Book,
-  title: string
+  book?: Book;
+  title: string;
+  readOnly?: boolean;
 }
 
-const BookForm: React.FC<BookFormProps> = ({ book, title }) => {
+const BookForm: React.FC<BookFormProps> = ({ book, title, readOnly }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [inputValues, setInputValues] = useState(book ? {
-    title: book.title,
-    price: book.price,
-    author: book.author,
-    date: book.date,
-    description: book.description,
-    published: book.published,
-  } : INITIAL_STATE) as any;
+  const [inputValues, setInputValues] = useState(
+    book
+      ? {
+        title: book.title,
+        price: book.price,
+        author: book.author,
+        date: book.date,
+        description: book.description,
+        published: book.published,
+      }
+      : INITIAL_STATE
+  );
 
-  // ****************** Handle Form Submission ******************
+  // Handle Form Submission
   const handleForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(inputValues, "inputValues");
-
-    const payLoad = {
-      ...inputValues,
-    };
-
     if (book?.id) {
-      console.log(book);
-      dispatch(editBook({
-        id: book.id,
-        title: inputValues.title,
-        price: inputValues.price,
-        author: inputValues.author,
-        date: inputValues.date,
-        description: inputValues.description,
-        published: inputValues.published,
-      }));
+      dispatch(
+        editBook({
+          id: book.id,
+          title: inputValues.title,
+          price: inputValues.price,
+          author: inputValues.author,
+          date: inputValues.date,
+          description: inputValues.description,
+          published: inputValues.published,
+        })
+      );
       Toast("Book updated successfully.", "success");
     } else {
-      dispatch(addBook(payLoad));
+      dispatch(addBook(inputValues));
       Toast("Book added successfully.", "success");
     }
 
     setInputValues(INITIAL_STATE);
 
-    navigate("/books")
+    navigate("/books");
   };
 
-  // ****************** Handle Form Inputs ******************
+  // Handle Form Inputs
   const handleChange = (type: string, value: string | number | any) => {
-    setInputValues((prevValues: any) => ({
+    setInputValues((prevValues) => ({
       ...prevValues,
       [type]: value,
     }));
@@ -95,6 +94,7 @@ const BookForm: React.FC<BookFormProps> = ({ book, title }) => {
             name="title"
             value={inputValues.title}
             onChange={(e) => handleChange("title", e.target.value)}
+            disabled={readOnly}
           />
         </FormGroup>
         {/* Price */}
@@ -107,21 +107,8 @@ const BookForm: React.FC<BookFormProps> = ({ book, title }) => {
             name="price"
             value={inputValues.price}
             onChange={(e) => handleChange("price", e.target.value)}
-            // @ts-ignore
-            onKeyDown={(e) => {
-              const allowedKeys = [
-                "Backspace", "ArrowLeft", "ArrowRight", "Tab", "Delete",
-              ];
-
-              if (
-                !/^[0-9]$/.test(e.key) &&
-                !allowedKeys.includes(e.key)
-              ) {
-                e.preventDefault();
-              }
-            }}
+            disabled={readOnly}
           />
-
         </FormGroup>
         {/* Author Name */}
         <FormGroup>
@@ -133,6 +120,7 @@ const BookForm: React.FC<BookFormProps> = ({ book, title }) => {
             name="author"
             value={inputValues.author}
             onChange={(e) => handleChange("author", e.target.value)}
+            disabled={readOnly}
           />
         </FormGroup>
         {/* Publish Date */}
@@ -143,8 +131,9 @@ const BookForm: React.FC<BookFormProps> = ({ book, title }) => {
             placeholder="Enter the date"
             id="date"
             name="date"
-            value={moment(inputValues.date,).format('YYYY-MM-DD')}
+            value={moment(inputValues.date).format("YYYY-MM-DD")}
             onChange={(e) => handleChange("date", e.target.value)}
+            disabled={readOnly}
           />
         </FormGroup>
         {/* Status */}
@@ -154,19 +143,20 @@ const BookForm: React.FC<BookFormProps> = ({ book, title }) => {
             placeholder="Select any option"
             id="published"
             name="published"
-            value={inputValues.published}
+            value={String(inputValues.published)}  // Convert to string
             options={[
               {
-                value: BookStatus.published,
+                value: String(BookStatus.published),  // Ensure BookStatus values are strings
                 label: BookStatus.published,
               },
               {
-                value: BookStatus.unPublish,
+                value: String(BookStatus.unPublish),  // Ensure BookStatus values are strings
                 label: BookStatus.unPublish,
               },
             ]}
             onChange={(e) => handleChange("published", e.target.value)}
-          ></Select>
+            disabled={readOnly}
+          />
         </FormGroup>
         {/* Description */}
         <FormGroup className="col-span-2">
@@ -178,17 +168,20 @@ const BookForm: React.FC<BookFormProps> = ({ book, title }) => {
             name="description"
             value={inputValues.description}
             onChange={(e) => handleChange("description", e.target.value)}
+            disabled={readOnly}
           />
         </FormGroup>
         {/* Buttons */}
-        <div className="flex gap-4 mt-5 col-span-2">
-          <Link to=".." type="submit" className="btn btn-danger block w-full text-center">
-            Cancel
-          </Link>
-          <Button block type="submit" className="btn btn-primary">
-            Submit
-          </Button>
-        </div>
+        {!readOnly && (
+          <div className="flex gap-4 mt-5 col-span-2">
+            <Link to=".." className="btn btn-danger block w-full text-center">
+              Cancel
+            </Link>
+            <Button block type="submit" className="btn btn-primary">
+              Submit
+            </Button>
+          </div>
+        )}
       </form>
     </Card>
   );

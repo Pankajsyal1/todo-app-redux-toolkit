@@ -21,6 +21,11 @@ import UsersPage from "./views/user";
 import ViewPost from "./views/posts/view";
 import AddUserPage from "./views/user/add";
 import LoginPage from "./views/login";
+import ViewUserPage from "./views/user/view";
+import EditUserPage from "./views/user/edit";
+import ViewBook from "./views/books/view";
+import EditPost from "./views/posts/edit";
+import CreatePost from "./views/posts/add";
 
 // Define all main routes except /users
 const MainRoutes = () => (
@@ -36,10 +41,13 @@ const MainRoutes = () => (
           <Route index element={<BookApp />} />
           <Route path="add" element={<AddBook />} />
           <Route path=":id/edit" element={<EditBook />} />
+          <Route path=":id/view" element={<ViewBook />} />
         </Route>
         <Route path="posts">
           <Route index element={<PostsPage />} />
-          <Route path="view/:id" element={<ViewPost />} />
+          <Route path=":id/view/" element={<ViewPost />} />
+          <Route path=":id/edit/" element={<EditPost />} />
+          <Route path="add" element={<CreatePost />} />
         </Route>
       </Route>
     </Routes>
@@ -52,6 +60,8 @@ const UsersRoutes = () => (
       <Route path="/users" element={<UsersLayout />}>
         <Route index element={<UsersPage />} />
         <Route path="/users/add" element={<AddUserPage />} />
+        <Route path="/users/:id/view" element={<ViewUserPage />} />
+        <Route path="/users/:id/edit" element={<EditUserPage />} />
       </Route>
     </Routes>
   </Provider>

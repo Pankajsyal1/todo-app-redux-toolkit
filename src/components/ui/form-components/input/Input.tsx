@@ -10,6 +10,7 @@ interface InputProps {
   value: string;
   className?: string;
   rows?: number;
+  disabled?: boolean;  // Add this line to the InputProps interface
 }
 
 const Input: React.FC<InputProps> = ({
@@ -21,7 +22,8 @@ const Input: React.FC<InputProps> = ({
   id,
   value,
   className,
-  rows=4,
+  rows = 4,
+  disabled = false,  // Default to false if not provided
   ...rest
 }) => {
   if (as === "textarea") {
@@ -36,6 +38,7 @@ const Input: React.FC<InputProps> = ({
         rows={rows}
         {...rest}
         required
+        disabled={disabled}
       />
     );
   }
@@ -50,6 +53,7 @@ const Input: React.FC<InputProps> = ({
       value={value}
       {...rest}
       required
+      disabled={disabled}
     />
   );
 };

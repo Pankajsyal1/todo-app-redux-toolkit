@@ -13,6 +13,7 @@ interface SelectProps {
   id: string;
   placeholder?: string;
   className?: string;
+  disabled?: boolean; // Add disabled prop
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -23,6 +24,7 @@ const Select: React.FC<SelectProps> = ({
   id,
   placeholder,
   className = "",
+  disabled = false, // Default to false
 }) => {
   return (
     <div className="relative">
@@ -33,6 +35,7 @@ const Select: React.FC<SelectProps> = ({
         id={id}
         className={`px-4 py-2 border-2 w-full rounded-md bg-white text-gray-700 outline-none focus:ring-2 focus:ring-primary-500 ${className}`}
         required
+        disabled={disabled}  // Pass disabled prop here
       >
         {placeholder && (
           <option value="" disabled>

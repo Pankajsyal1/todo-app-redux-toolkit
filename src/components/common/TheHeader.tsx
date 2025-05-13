@@ -67,7 +67,7 @@ const TheHeader: React.FC = () => {
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200">
-          <NavList mobile={true} />
+       <NavList mobile={true} closeMenu={() => setMobileMenuOpen(false)} />
         </div>
       )}
     </header>

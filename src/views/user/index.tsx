@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { RootState } from "@/store/store-thunk/thunkRootReducer";
 import Section from "@/components/ui/section/Section";
 import { Toast } from "@/utils/plugins/toast";
 import { deleteUser } from "@/store/store-thunk/users";
-import { useAppDispatch } from "@/store/store-thunk"; 
+import { useAppDispatch } from "@/store/store-thunk";
 import TrashFilled from "@/components/icons/TrashFilled";
 import PencilFilled from "@/components/icons/PencilFilled";
 import ShowFilled from "@/components/icons/ShowFilled";
@@ -14,6 +14,7 @@ import ShowFilled from "@/components/icons/ShowFilled";
 
 const UsersPage: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
   const { users } = useSelector((state: RootState) => state.users);
   const [filteredUsers, setFilteredUsers] = useState<any>(users);
   const [query, setQuery] = useState<string>('');
@@ -37,9 +38,6 @@ const UsersPage: React.FC = () => {
     setSortOrder(e.target.value);
   };
 
-  // const loadData = () => {
-  //   setFilteredUsers(users)
-  // }
 
   useEffect(() => {
     const queryString = query.toLowerCase();
@@ -87,15 +85,15 @@ const UsersPage: React.FC = () => {
   }
 
 
- 
+
 
   return (
     <Section>
       <div className="container">
         {/* Heading Search and Add Button */}
-        <div className="flex justify-between items-center mb-5">
+        <div className="flex justify-between items-center mb-5 flex-wrap">
           <h1 className={`text-lg sm:text-xl md:text-2xl font-extrabold uppercase`}>Users List</h1>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
             <input
               className={`px-4 py-2 border-2 rounded-md overflow-hidden hover:border-primary-500 outline-primary-500 focus:border-primary-500 `}
               value={query}
@@ -121,7 +119,6 @@ const UsersPage: React.FC = () => {
               <option value="name">Sort by Name</option>
               <option value="email">Sort by Email</option>
               <option value="phone">Sort by Phone</option>
-              <option value="status">Sort by Status</option>
             </select>
 
             <select
@@ -136,7 +133,7 @@ const UsersPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="p-4 bg-white shadow-md rounded-lg flex flex-col gap-2 border border-gray-200">
+        <div className="p-4 bg-white shadow-md rounded-lg flex flex-col gap-2 border border-gray-200 overflow-auto">
           <table className="min-w-full divide-y divide-gray-300 text-sm">
             <thead className="bg-gray-800 text-white">
               <tr>
@@ -168,19 +165,21 @@ const UsersPage: React.FC = () => {
                           onClick={() => handleDelete(user.id)}
                           title="Delete"
                         >
-                         <TrashFilled/>
+                          <TrashFilled />
                         </button>
                         <button
+                          onClick={() => navigate(`/users/${user.id}/edit`)}
                           className="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md"
                           title="Edit"
                         >
-                         <PencilFilled/>
+                          <PencilFilled />
                         </button>
                         <button
+                          onClick={() => navigate(`/users/${user.id}/view`)}
                           className="p-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md"
                           title="View"
                         >
-                          <ShowFilled/>
+                          <ShowFilled />
                         </button>
                       </div>
                     </td>
@@ -190,7 +189,6 @@ const UsersPage: React.FC = () => {
                 <tr>
                   <td colSpan={6} className="text-center px-4 py-4 text-gray-500">
                     No User found!!!
-                    {/* <Button className="bg-green-500" onClick={loadData}>Refresh</Button> */}
                   </td>
                 </tr>
               )}
