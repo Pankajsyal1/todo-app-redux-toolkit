@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import HideFilled from "@/components/icons/HideFilled";
 import ShowFilled from "@/components/icons/ShowFilled";
+import Logo from "@/components/common/Logo";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("test@yopmail.com");
@@ -25,7 +26,10 @@ const LoginPage: React.FC = () => {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="w-full max-w-md p-8 bg-white shadow-md rounded-lg flex flex-col gap-2 border border-gray-200">
-        <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
+        <div className="text-center">
+          <Logo center />
+        </div>
+        <h2 className="text-3xl font-bold text-center mt-3 mb-6">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">

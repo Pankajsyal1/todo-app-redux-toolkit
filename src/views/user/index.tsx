@@ -1,17 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { RootState } from "@/store/store-thunk/thunkRootReducer";
 import Section from "@/components/ui/section/Section";
 import { Toast } from "@/utils/plugins/toast";
 import { deleteUser } from "@/store/store-thunk/users";
-import Button from "@/components/ui/button/Button";
-
+import { useAppDispatch } from "@/store/store-thunk"; 
 
 
 const UsersPage: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { users } = useSelector((state: RootState) => state.users);
   const [filteredUsers, setFilteredUsers] = useState<any>(users);
   const [query, setQuery] = useState<string>('');

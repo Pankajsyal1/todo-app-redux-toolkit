@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NavList from "./NavList";
-import logo from "@/assets/logo.png";
+import Logo from "./Logo";
 
 const TheHeader: React.FC = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -15,7 +15,7 @@ const TheHeader: React.FC = () => {
       {/* Main header container */}
       <div className="container mx-auto flex justify-between items-center py-3 px-4">
         <Link to="/todos" className="flex items-center">
-          <img src={logo} alt="Logo" width={140} />
+          <Logo/>
         </Link>
 
         {/* Desktop Navigation */}
