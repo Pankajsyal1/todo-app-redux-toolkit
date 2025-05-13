@@ -28,7 +28,7 @@ const ViewPost = () => {
     return (
         <Section>
             <div className="m-3">
-                <Button className="mb-2 px-4 py-2 rounded-md text-white font-semibold transition-all duration-200 bg-green-500 hover:bg-green-600" onClick={() => navigate(-1)}><BackOutlined/></Button>
+                <Button className="mb-4 px-4 py-2 rounded-md text-white font-semibold transition-all duration-200 bg-green-500 hover:bg-green-600" onClick={() => navigate(-1)}><BackOutlined/></Button>
                     <SectionHeading
                         onSort={() => console.log}
                         onSearch={() => console.log}

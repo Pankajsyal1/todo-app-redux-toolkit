@@ -31,7 +31,7 @@ const Select: React.FC<SelectProps> = ({
         onChange={onChange}
         name={name}
         id={id}
-        className={`px-4 py-2 border-2 w-full rounded-sm bg-white text-gray-700 outline-none focus:ring-2 focus:ring-primary-500 ${className}`}
+        className={`px-4 py-2 border-2 w-full rounded-md bg-white text-gray-700 outline-none focus:ring-2 focus:ring-primary-500 ${className}`}
         required
       >
         {placeholder && (

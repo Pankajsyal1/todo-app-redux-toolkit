@@ -29,7 +29,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
 
 
   return (
-    <div className={`flex flex-wrap lg:flex-nowrap px-3  ${center ? 'justify-center' : 'justify-between'} items-center mb-5`}>
+    <div className={`flex flex-wrap lg:flex-nowrap px-3 md:px-0  ${center ? 'justify-center' : 'justify-between'} items-center mb-5`}>
       <h1 className={`text-lg sm:text-xl md:text-2xl font-extrabold uppercase ${center ? 'text-center' : ''}`}>{title}</h1>
       {extra &&
         <div className='flex gap-3 flex-wrap sm:flex-nowrap mx-3'>

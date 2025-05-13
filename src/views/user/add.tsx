@@ -1,11 +1,12 @@
+import Section from "@/components/ui/section/Section"
 
 const AddUserPage = () => {
     return (
-        <section className="py-10">
+        <Section>
             <div>
                 <h1>111111</h1>
             </div>
-        </section>
+        </Section>
     )
 }
 

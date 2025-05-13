@@ -7,6 +7,9 @@ import Section from "@/components/ui/section/Section";
 import { Toast } from "@/utils/plugins/toast";
 import { deleteUser } from "@/store/store-thunk/users";
 import { useAppDispatch } from "@/store/store-thunk"; 
+import TrashFilled from "@/components/icons/TrashFilled";
+import PencilFilled from "@/components/icons/PencilFilled";
+import ShowFilled from "@/components/icons/ShowFilled";
 
 
 const UsersPage: React.FC = () => {
@@ -94,14 +97,14 @@ const UsersPage: React.FC = () => {
           <h1 className={`text-lg sm:text-xl md:text-2xl font-extrabold uppercase`}>Users List</h1>
           <div className="flex gap-2">
             <input
-              className={`px-4 py-2 border-2 rounded-sm overflow-hidden hover:border-primary-500 outline-primary-500 focus:border-primary-500 `}
+              className={`px-4 py-2 border-2 rounded-md overflow-hidden hover:border-primary-500 outline-primary-500 focus:border-primary-500 `}
               value={query}
               onChange={handleSearch}
               type="search"
               placeholder="Search by name, phone, and email..."
             />
             <select
-              className="px-4 py-2 border-2 rounded-sm overflow-hidden bg-white hover:border-primary-500 outline-primary-500 focus:border-primary-500"
+              className="px-4 py-2 border-2 rounded-md overflow-hidden bg-white hover:border-primary-500 outline-primary-500 focus:border-primary-500"
               value={filterByStatus}
               onChange={handleFilter}
             >
@@ -111,7 +114,7 @@ const UsersPage: React.FC = () => {
             </select>
 
             <select
-              className="px-4 py-2 border-2 rounded-sm overflow-hidden bg-white hover:border-primary-500 outline-primary-500 focus:border-primary-500"
+              className="px-4 py-2 border-2 rounded-md overflow-hidden bg-white hover:border-primary-500 outline-primary-500 focus:border-primary-500"
               value={sortField}
               onChange={handleSortField}
             >
@@ -122,14 +125,14 @@ const UsersPage: React.FC = () => {
             </select>
 
             <select
-              className="px-4 py-2 border-2 rounded-sm overflow-hidden bg-white hover:border-primary-500 outline-primary-500 focus:border-primary-500"
+              className="px-4 py-2 border-2 rounded-md overflow-hidden bg-white hover:border-primary-500 outline-primary-500 focus:border-primary-500"
               value={sortOrder}
               onChange={handleSortOrder}
             >
               <option value="asc">Ascending</option>
               <option value="desc">Descending</option>
             </select>
-            <Link to="/users/add" className="px-4 py-2 rounded-sm text-white font-semibold transition-all duration-200 bg-green-500 hover:bg-green-600">Add New User</Link>
+            <Link to="/users/add" className="px-4 py-2 rounded-md text-white font-semibold transition-all duration-200 bg-green-500 hover:bg-green-600">Add New User</Link>
           </div>
         </div>
 
@@ -161,30 +164,23 @@ const UsersPage: React.FC = () => {
                     <td className="px-4 py-3">
                       <div className="flex gap-2">
                         <button
-                          className="p-2 bg-red-600 hover:bg-red-700 text-white rounded-full"
+                          className="p-2 bg-red-600 hover:bg-red-700 text-white rounded-md"
                           onClick={() => handleDelete(user.id)}
                           title="Delete"
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                          </svg>
+                         <TrashFilled/>
                         </button>
                         <button
-                          className="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full"
+                          className="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md"
                           title="Edit"
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5h6M11 5L5 11v6h6l6-6M11 5l6 6" />
-                          </svg>
+                         <PencilFilled/>
                         </button>
                         <button
-                          className="p-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full"
+                          className="p-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md"
                           title="View"
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                          </svg>
+                          <ShowFilled/>
                         </button>
                       </div>
                     </td>

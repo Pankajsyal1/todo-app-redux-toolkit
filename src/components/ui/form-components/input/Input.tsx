@@ -28,7 +28,7 @@ const Input: React.FC<InputProps> = ({
     return (
       <textarea
         id={id}
-        className={`px-4 py-2 border-2 rounded-sm overflow-hidden hover:border-primary-500 outline-primary-500 ${className}`}
+        className={`px-4 py-2 border-2 rounded-md overflow-hidden hover:border-primary-500 outline-primary-500 ${className}`}
         name={name}
         placeholder={placeholder}
         onChange={onChange}
@@ -42,7 +42,7 @@ const Input: React.FC<InputProps> = ({
   return (
     <input
       type={type}
-      className={`px-4 py-2 border-2 rounded-sm overflow-hidden hover:border-primary-500 outline-primary-500 ${className}`}
+      className={`px-4 py-2 border-2 rounded-md overflow-hidden hover:border-primary-500 outline-primary-500 ${className}`}
       id={id}
       name={name}
       placeholder={placeholder}
